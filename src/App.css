@@ -1,0 +1,102 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.cel-fahr {
+  font-size: 35px;
+}
+
+.cel-fahr .on {
+  color: #595959;
+  cursor: default;
+}
+
+.cel-fahr,
+.city,
+#current-degree,
+.date,
+#description,
+.humidity,
+#icon,
+#update,
+.wind {
+  top: 20px;
+}
+
+#celsius,
+#fahrenheit {
+  text-decoration: none;
+}
+
+.container {
+  width: 60%;
+  background: #e6f3ff;
+  border-radius: 30px;
+  border: 2px solid blue;
+}
+
+.date {
+  font-size: 30px;
+}
+
+#description {
+  text-transform: capitalize;
+}
+
+form {
+  display: inline;
+}
+
+form,
+h1,
+h2,
+h3,
+h4,
+h6,
+img {
+  position: relative;
+}
+
+#github,
+.heading,
+.weather-today {
+  text-align: center;
+}
+
+.heading {
+  padding-top: 10px;
+}
+
+.humidity,
+.wind {
+  top: 50px;
+}
+
+input {
+  width: 50%;
+  border: none;
+}
+
+p {
+  font-size: 25px;
+}
+
+#search-button {
+  background: grey;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 30px;
+  border: gray 1px solid;
+}
+
+#search-button:hover {
+  background: white;
+  color: grey;
+}
+
+.weather-conditions,
+.weather-today {
+  height: 370px;
+  padding: 0;
+}
