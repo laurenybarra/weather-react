@@ -46,7 +46,7 @@ export default function App() {
         </div>
       </div>
       <p id="github">
-        <a href="https://github.com/laurenybarra/weatherApp.git">
+        <a href="https://github.com/laurenybarra/weather-react">
           Open-source code 
         </a> 
           by Lauren Ybarra
