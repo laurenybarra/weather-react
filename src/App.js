@@ -1,57 +1,63 @@
 import './App.css';
+import React, { useState } from "react";
+import axios from "axios";
+import WeatherInfo from "./WeatherInfo";
 
-export default function App() {
-  return (
+export default function App(props) {
+  const [info, setInfo] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
+  function handleResponse(response) {
+    setInfo({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      description: response.data.weather[0].description,
+      date: new Date(response.data.dt * 1000),
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    });
+  }
+
+  function search() {
+    const apiKey = "50ea266795ff34ae2a3920026adbb08c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function enterCity(event) {
+    event.preventDefault();
+  }
+
+  function cityChange(event) {
+    setCity(event.target.value);
+    search();
+  }
+
+  if (info.ready) {
+    return (
     <div className="App">
       <div class="container">
         <div class="heading">
-          <form id="search-city">
-            <input type="text" placeholder="Enter city" />
+          <form id="search-city" onSubmit={enterCity}>
+            <input type="text" placeholder="Enter city" onChange={cityChange} />
             <button id="search-button">Search</button>
           </form>
-        </div>
-        <div class="row">
-          <div class="weather-today col">
-            <h1 class="city">Los Angeles</h1>
-            <h4 id="description">Sunny</h4>
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
-              alt="Clear"
-              id="icon"
-            />
-            <h1 id="current-degree">70°</h1>
-            <h4 class="cel-fahr">
-              <a href="." id="celsius" class="on">
-                C°
-              </a>
-              |
-              <a href="." id="fahrenheit">
-                F°
-              </a>
-            </h4>
-          </div>
-          <div class="weather-conditions col">
-            <h1 id="update">
-              Last updated on: Monday 16:25
-              <br />
-              <span class="date"></span>
-            </h1>
-            <h2 class="wind">
-              Wind: <span id="wind">1</span>km/h
-            </h2>
-            <h2 class="humidity">
-              Humidity: <span id="humidity">50</span>%
-            </h2>
-          </div>
+          <WeatherInfo data={info} />
         </div>
       </div>
       <p id="github">
         <a href="https://github.com/laurenybarra/weather-react">
           Open-source code 
         </a> 
-          by Lauren Ybarra
+          {""} by Lauren Ybarra
       </p>
     </div>
   );
+  } else {
+      search();
+      return "Loading...";
+  }
+  
 }
 
