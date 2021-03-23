@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+canvas {
+  background: red;
+}
+
 .cel-fahr {
   font-size: 35px;
 }

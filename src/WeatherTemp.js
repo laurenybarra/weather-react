@@ -16,7 +16,7 @@ export default function WeatherTemp(props) {
     if (unit === "celsius") {
         return (
             <div className="WeatherTemp">
-                <h1 id="current-degree">{Math.round(props.celsius)}</h1>
+                <h1 id="current-degree">{Math.round(props.celsius)}°</h1>
                 <h4 class="cel-fahr">
                     C° | {" "}
                     <a href="." id="fahrenheit" onClick={convertToFahr}>
@@ -28,7 +28,7 @@ export default function WeatherTemp(props) {
     } else {
         return (
             <div className="WeatherTemp">
-                <h1 id="current-degree">{Math.round(fahrenheit())}</h1>
+                <h1 id="current-degree">{Math.round(fahrenheit())}°</h1>
                 <h4 class="cel-fahr">
                     <a href="." id="celsius" onClick={convertToCel}>
                         C°
