@@ -27,11 +27,11 @@ export default function App(props) {
 
   function enterCity(event) {
     event.preventDefault();
+    search();
   }
 
   function cityChange(event) {
     setCity(event.target.value);
-    search();
   }
 
   if (info.ready) {
